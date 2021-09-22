@@ -1,0 +1,120 @@
+{% import 'bootstrap/wtf.html' as wtf %}
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+	.form-control {
+		margin-bottom: 10px;
+	}
+</style>
+<section class="profile">
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-md-12">
+
+				{% with messages = get_flashed_messages(with_categories=true) %}
+				{% if messages %}
+				{% for category, message in messages %}
+
+				<div class="alert alert-{{ category }} d-flex align-items-center" role="alert">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="{{ category }}:">
+            <use xlink:href="#exclamation-triangle-fill" />
+          </svg>
+					<div>
+						{{ message }}
+					</div>
+				</div>
+				{% endfor %}
+				{% endif %}
+				{% endwith %}
+			</div>
+			<div class="col-md-4">
+				<div class="card">
+					{% if user.profile_image %}
+
+					<img src="{{url_for('static',filename=user.profile_image)}}" alt="" class="card-img-top">
+
+					{%else%}
+					<img src="https://st2.depositphotos.com/1104517/11965/v/600/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg"
+							class="card-img-top" alt="My profile picture">
+
+					{% endif %
+
+					<div class="card-body text-center">
+						<h4 class="card-text">
+								{% if current_user.name == None %}
+								<span class="text-danger">No name</span>
+								{% else %}
+								{{ current_user.name }}
+								{% endif %}
+						</h4>
+						<p>{{ current_user.username }}</p>
+						<p>
+								{% if current_user.about_me %}
+								<small>{{ current_user.about_me }}</small>
+								{% else %}
+								<span class="text-danger">No about me</span>
+								{% endif %}
+						</p>
+						<h6>Joined on: <span class="badge rounded-pill bg-secondary text-white">
+										{{ current_user.member_since.strftime('%d %b %Y') }}</span></h6>
+
+				  </div>
+				</div>
+				<div class="row">
+					<div class="clo-md-12">
+						<div class="card p-2">
+							{% if user == current_user %}
+							<form action="{{url_for('main.update_profile_pic',uname=user.username)}}" method="post"
+								enctype="multipart/form-data">
+								<div class="row">
+									<div class="col-md-12">
+											<input type="file" name="photo" class="form-control" required>
+									</div>
+									<div class="col-md-12">
+											<input type="submit" class="btn btn-dark btn-lg btn-sm" value="Update Picture">
+									</div>
+								</div>
+							</form>
+							{% endif %
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="card">
+						<div class="form-update-profile">
+							<div class="row m-3">
+								{{ wtf.quick_form(form) }}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<!-- Personal pitches -->
+					<div class="card">
+						<div class="card-header">
+							<div class="d-flex justify-content-between">
+								<div>
+									<h4 class="card-title">My Pitches</h4>
+								</div>
+								<div>
+									<button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+											<i class="fa fa-plus"></i> Add a Pitch
+									</button>
+									<!-- Modal -->
+									{% include 'modals/add_pitch.html' %}
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							{% include 'pitches.html' %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

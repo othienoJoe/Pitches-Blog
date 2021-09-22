@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<div class="row">
+	<div class="col-md-12">
+		<div class="card m-4">
+			<h3 class="text-success text-uppercase">{{ pitch.title }}</h3>
+			<p class="m-2">
+				{{ pitch.body }}
+			</p>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="row">
+			<div class="col-md-12 m-3">
+
+				<!-- loop through comments object -->
+				{% for comment in comments %}
+				<div class="card">
+					<div class="d-flex justify-content-start">
+						<div class="img-box">
+							{% if pitch.user.profile_image %}
+							<img src="{{url_for('static',filename=pitch.user.profile_image)}}" alt="{{ pitch.title }}">
+							{% else %}
+							<img src="https://st2.depositphotos.com/1104517/11965/v/600/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg"
+									alt="{{ pitch.title }}">
+							{% endif %}
+						</div>
+						<div class="m-2">
+							<h6>{{ pitch.user.name}}</h6>
+							<h6> <i class="fa fa-clock"></i> <span>
+									{{ comment.timestamp.strftime("%d %b %Y") }}
+									</span>
+							</h6>
+						</div>
+					</div>
+					<p class="m-2">
+							{{ comment.body }}
+					</p>
+				</div>
+				{% endfor %}
+
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<!-- add comment form -->
+		<div class="card m-3" style="margin-right: 20px;">
+			{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+			{% for category, message in messages %}
+			<div class="alert alert-{{ category }} d-flex align-items-center mt-4" role="alert">
+				<svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="{{ category }}:">
+						<use xlink:href="#exclamation-triangle-fill" />
+				</svg>
+				<div>
+						{{ message }}
+				</div>
+			</div>
+			{% endfor %}
+			{% endif %}
+			{% endwith %}
+			<div class="card-body">
+				{{ wtf.quick_form(form) }}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

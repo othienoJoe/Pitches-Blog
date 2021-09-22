@@ -1,0 +1,61 @@
+<!-- To display posts -->
+{% macro displayPitches(pitch_list) %}
+
+{% for pitch in pitch_list %}
+<div class="col-md-4">
+	<a href="{{ url_for('main.pitch', id = pitch_id)}}">
+		<div class="card latest-cards">
+			<div class="latest-cards-body m-2">
+				<div class="d-flex justify-content-start">
+					<div class="thumbnail">
+						{% if pitch.user.profile_image %}
+						<img src="{{url_for('static',filename=pitch.user.profile_image)}}" alt="">
+						{% else %}
+						<img src="https://st2.depositphotos.com/1104517/11965/v/600/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg"
+								alt="">
+						{% endif %}
+				</div>
+				<div class="">
+					<h6>{{ pitch.user.name }}
+						<br>
+						<span style="font-size: 13px;">
+								<i class="fa fa-clock"></i>
+								{{ pitch.timestamp.strftime("%d %b %Y") }}
+						</span>
+					</h6>
+				</div>
+			</div>
+			<div class="card-header">
+					<h6>
+							{{ pitch.title }}
+					</h6>
+			</div>
+			<p class="text-black">
+					{{ pitch.body[:100] }} ....
+			</p>
+			<!-- read more -->
+			<a href="{{ url_for('main.pitch', id = pitch.id)}}" class="text-center text-danger">
+					Read More
+					<i class="fa fa-arrow-right"></i>
+			</a>
+			<div class="d-flex justify-content-start text-black">
+				<div class="mt-2">
+					<!-- like button -->
+					<a href="{{ url_for('main.like',id = pitch.id)}}">
+						<i class="fa fa-thumbs-up"></i> <small class="">{{ pitch.like.count()}}</small>
+					</a>
+				</div>
+				<div class="mt-2">
+					<!-- like button -->
+					<a href="{{ url_for('main.dislike',id = pitch.id)}}" class="text-danger">
+						<i class="fa fa-thumbs-down"></i> <small>{{ pitch.dislike.count()}}</small>
+					</a>
+				</div>
+			</div>
+		</div>
+	</a>
+</div>
+
+{% endfor %}
+
+{% endmacro %}

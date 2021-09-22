@@ -1,0 +1,38 @@
+<table class="table table-responsive table-hover">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Category</th>
+			<th scope="col">Title</th>
+			<th scope="col">Body</th>
+			<th scope="col">Likes</th>
+			<th scope="col">Dislikes</th>
+			<th scope="col">Date</th>
+			<th scope="col"></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for pitch in pictures %}
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td><button class="btn btn-warning btn-sm">{{ pitch.category.name }}</button></td>
+			<td>{{ pitch.title }}</td>
+			<td><small>{{ pitch.body }}</small></td>
+			<td>
+				<span class="badge rounded-pill bg-primary">
+					<small>{{ pitch.like.count()}}</small>
+				</span>
+			</td>
+			<td>
+				<span class="badge rounded-pill bg-danger">
+					<small>{{ pitch.dislike.count()}}</small>
+				</span>
+			</td>
+			<td>{{ pitch.timestamp.strftime('%d %b %Y') }}</td>
+			<td>
+				<a href="{{ url_for('main.delete_pitch',id=pitch.id)}}" class="text-danger"><small><i class="fa fa-trash"></i></small></a>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
