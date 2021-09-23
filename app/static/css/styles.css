@@ -1,0 +1,268 @@
+body {
+	overflow-x: hidden;
+	background-color: #b9e3e6;
+}
+:root {
+	--main-color: #e73ea681;
+}
+
+/* The Navbar */
+.navbar-brand {
+	font-size: 2em;
+	color: beige;
+	font-family: sans-serif, "Poppins";
+	text-transform: uppercase;
+}
+.navbar-brand:hover {
+  color: black;
+}
+.navbar-expand-lg, footer {
+  background-color: #800080;
+}
+.navbar-expand-lg li a {
+  color: white;
+}
+.navbar-toggler .fa-bars {
+  color: white;
+}
+.nav-right {
+  margin-right: 20px;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.navbar-brand span {
+  color: var(--main-color);
+  font-size: 20px;
+}
+.navbar-brand:hover {
+  color: #ffffff;
+}
+.nav-link:hover {
+	color: var(--main-color);
+}
+
+/* The Content */
+a {
+	text-decoration: none;
+}
+.btn-primary {
+	background-color: #21f71a;
+	border-color: #0015ff;
+}
+.btn-primary:hover {
+	background-color: #21f71a;
+	border-color: #0015ff;
+}
+.btn-success {
+  background-color: #f52ff5;
+  border-color: #800080;
+}
+
+.btn-success:hover {
+  background-color: #f553f5;
+  border-color: #800080;
+}
+
+.btn-secondary,
+.btn-secondary:hover {
+  background-color: #6b34ba;
+  color: white !important;
+  border-color: #6b34ba;
+}
+
+.btn-default,
+.btn-default:hover {
+  background-color: #1d1616;
+  border-color: #000000;
+  color: white;
+  margin-top: 10px;
+}
+
+.btn-outline-danger:hover {
+  color: white !important;
+}
+
+/* The homepage */
+.homepage {
+  margin: 20px;
+}
+.trending {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+}
+.trending-content {
+  padding-top: 350px;
+  margin: 10px;
+  color: white;
+}
+.trending-div {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+}
+.homepage .thumbnail img,
+.latest-pitches .latest-cards-body img {
+  height: 30px;
+  border-radius: 50%;
+}
+.homepage .justify-content-start div {
+  margin-right: 10px;
+}
+.homepage .justify-content-start div h6 {
+  font-size: 15px;
+}
+.div-right .homepage .justify-content-start span {
+  color: rgb(73, 73, 73);
+}
+.headings {
+	float: left;
+  color:rgba(122, 61, 61, 0.555);
+	display: block;
+  font-size: 26px;
+  text-transform: capitalize;
+  letter-spacing: -0.03em !important;
+  padding-bottom: 0px;
+  margin: 0px;
+  letter-spacing: 0em;
+  position: relative;
+}
+.card-right-homepage {
+  padding: 14px;
+  background-color: white;
+  border-radius: 15px;
+  color: black;
+}
+.card-right-homepage img {
+  border-radius: 15px;
+}
+
+/* Categories */
+.card-category {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+}
+.card-category-title-right {
+  background-color: white;
+  padding: 5px;
+  border-radius: 50%;
+}
+.card-category-content {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 7px;
+  border-radius: 20px;
+}
+.card-category-content h6 {
+  font-weight: 900;
+}
+
+/* The pitches section */
+.img-box img {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+.text-underline {
+  text-decoration: underline;
+}
+
+
+.latest-cards-heading {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 5px;
+}
+.latest-content button {
+  margin: 30px 0px 0px 30px;
+}
+.latest-content {
+  padding-bottom: 150px;
+}
+.latest-pitches h5 {
+  color: black;
+}
+.latest-pitches .latest-cards-body h6 {
+  font-size: 15px;
+  color: rgb(41, 41, 41);
+}
+.latest-pitches .latest-cards-body .justify-content-start div {
+  margin-right: 10px;
+}
+.card {
+  background: #fff none repeat scroll 0 0;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 11px 5px #673ab71a;
+  margin-bottom: 30px;
+  padding: 5px 2px;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+.card:hover {
+  box-shadow: 0 0 11px 5px rgba(70, 41, 121, 0.25);
+  background: linear-gradient(-19deg, rgba(235, 174, 8, 0.95) 0px);
+}
+
+/* The login page */
+.container-header {
+  text-align: center;
+  padding: 25px;
+  background-color: #f0f0f0;
+}
+.login-card {
+  border: 1px solid #d3ced2;
+  padding: 20px;
+  margin: 2em 0;
+  text-align: left;
+  border-radius: 5px;
+}
+.login-container {
+  background-color: white;
+}
+.login-container label {
+  display: block;
+  font-size: 15px;
+  font-weight: 400;
+}
+.login-container .checkbox {
+  margin-top: 10px;
+}
+.login-container p {
+  margin-top: 10px;
+  font-size: 13px;
+}
+.login-container .form-group {
+  margin-top: 10px;
+}
+.login-container .help-block {
+  color: #ff0000;
+}
+
+/* The Profile page */
+.card-img-top {
+  border-radius: 50%;
+  display: block;
+  float: none;
+  height: 180px;
+  line-height: 32px;
+  margin: 0 auto;
+  width: 180px;
+  margin-top: 6px;
+}
+
+/* Footer */
+footer {
+	color: #eeeff5;
+	padding: 10px;
+}
+footer a {
+	color: rgb(26, 25, 25);
+}
+
+.latest-cards {
+	height: 250px;
+}
